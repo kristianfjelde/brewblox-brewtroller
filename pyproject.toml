@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "brewblox_brewtroller"
-version = "0.1.0"
-description = "ADD DESCRIPTION HERE"
-authors = ["Code Fairies Inc <noreply@santa.com>"]
+version = "0.0.1"
+description = "Brewblox Brewtroller service to pull data from brewtroller HERMS setup"
+authors = ["Kristian Pedersen <kristian@fjelde.io>"]
 license = "GPL-3.0"
 readme = "README.md"
 
