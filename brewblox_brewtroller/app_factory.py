@@ -13,7 +13,7 @@ def setup_logging(debug: bool):
     """
     Initializes logging, defining log level and formatting.
     """
-    # 2024/02/15 14:48:05.963 [I:your_package.app_factory:16] example message
+    # 2024/02/15 14:48:05.963 [I:brewblox_brewtroller.app_factory:16] example message
     format = '%(asctime)s.%(msecs)03d [%(levelname).1s:%(name)s:%(lineno)d] %(message)s'
     datefmt = '%Y/%m/%d %H:%M:%S'
     level = logging.DEBUG if debug else logging.INFO

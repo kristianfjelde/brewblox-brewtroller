@@ -8,7 +8,7 @@ import pytest
 from fastapi import FastAPI
 from httpx import AsyncClient
 
-from your_package import http_example
+from brewblox_brewtroller import http_example
 
 
 @pytest.fixture

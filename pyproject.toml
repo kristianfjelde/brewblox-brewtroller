@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "your_package"
+name = "brewblox_brewtroller"
 version = "0.1.0"
 description = "ADD DESCRIPTION HERE"
 authors = ["Code Fairies Inc <noreply@santa.com>"]

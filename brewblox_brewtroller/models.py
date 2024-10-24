@@ -19,17 +19,17 @@ class ServiceConfig(BaseSettings):
     To access the loaded model, we use `utils.get_config()`.
     """
     model_config = SettingsConfigDict(
-        # `name` is now loaded from the environment variable `your_package_name`
-        env_prefix='your_package_',
+        # `name` is now loaded from the environment variable `brewblox_brewtroller_name`
+        env_prefix='brewblox_brewtroller_',
 
-        # You can use either `your_package_name=name` or `YOUR_PACKAGE_NAME=name`
+        # You can use either `brewblox_brewtroller_name=name` or `YOUR_PACKAGE_NAME=name`
         case_sensitive=False,
 
         # Ignores all unknown environment variables that happen to have the same prefix
         json_schema_extra='ignore',
     )
 
-    name: str = 'your_package'
+    name: str = 'brewblox_brewtroller'
     debug: bool = False
 
     mqtt_protocol: Literal['mqtt', 'mqtts'] = 'mqtt'

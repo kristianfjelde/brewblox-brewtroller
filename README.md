@@ -81,7 +81,7 @@ Your repository readme (this file). It will automatically be displayed in Github
 
 ---
 
-### [your_package/](./your_package/)
+### [brewblox_brewtroller/](./brewblox_brewtroller/)
 
 The source code directory. The directory name is used when importing your code in Python.
 

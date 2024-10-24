@@ -15,7 +15,7 @@ from asgi_lifespan import LifespanManager
 from fastapi import FastAPI
 from fastapi_mqtt import MQTTClient
 
-from your_package import mqtt, mqtt_publish_example, utils
+from brewblox_brewtroller import mqtt, mqtt_publish_example, utils
 
 
 @asynccontextmanager
@@ -66,8 +66,8 @@ async def test_publish(manager: LifespanManager):
     assert m_mqtt_client.publish.call_count > 0
 
     # The topic is `f'{config.history_topic}/{config.name}'`
-    # In tests, that equals `brewcast/history/your_package`
+    # In tests, that equals `brewcast/history/brewblox_brewtroller`
     # The value is random, so we just match it with `ANY`
-    assert m_mqtt_client.publish.call_args_list[0].args == ('brewcast/history/your_package',
-                                                            {'key': 'your_package',
+    assert m_mqtt_client.publish.call_args_list[0].args == ('brewcast/history/brewblox_brewtroller',
+                                                            {'key': 'brewblox_brewtroller',
                                                              'data': {'value[degC]': ANY}})
