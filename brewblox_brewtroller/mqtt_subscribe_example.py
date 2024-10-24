@@ -33,11 +33,8 @@ def setup():
         LOGGER.info(f'{topic=}, {key=}')
         LOGGER.debug(f'{key=}, {data=}')
 
-
     @mqtt_client.subscribe(config.mqtt_topic + '/state/#')
     async def on_state_message(client, topic, payload, qos, properties):
         evt = json.loads(payload)
         key = evt['key']
-        data = evt['data']
         LOGGER.info(f'{topic=}, {key=}')
-        LOGGER.debug(f'{key=}, {data=}')
