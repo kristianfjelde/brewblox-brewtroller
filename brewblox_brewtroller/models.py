@@ -39,6 +39,9 @@ class ServiceConfig(BaseSettings):
     history_topic: str = 'brewcast/history'
     publish_interval: timedelta = timedelta(seconds=5)
 
+    bt_url: str = 'http://brewtroller'
+    simulation: bool = False
+
 
 class ExampleMessage(BaseModel):
     """
