@@ -26,24 +26,32 @@ async def run():
     config = utils.get_config()
     mqtt_client = mqtt.CV.get()
 
-    topic: str = f'{config.history_topic}/{config.name}'
+    history_topic: str = f'{config.mqtt_topic}/history/{config.name}'
     interval: float = config.publish_interval.total_seconds()
     value: float = 20
+
+    state_topic: str = f'{config.mqtt_topic}/state/{config.name}'
 
     while True:
         await asyncio.sleep(interval)
 
-        # Add a random value [-5, 5] so we see steady changes
+        mqtt_client.publish(state_topic,
+                            {
+                                'key': config.name,
+                                'type': 'Brewtroller.state.service',
+                                'timestamp': utils.time_ms(),
+                            })
+
         value += ((random() - 0.5) * 10)
 
-        # Format the message as a Brewblox history event
-        # https://www.brewblox.com/dev/reference/history_events.html
         message = {
             'key': config.name,
-            'data': {'value[degC]': value}
+            'type': 'Brewtroller.state',
+            'data': {'value[degC]': value},
+            'timestamp': utils.time_ms()
         }
 
-        mqtt_client.publish(topic, message)
+        mqtt_client.publish(history_topic, message)
         LOGGER.info(f'sent {message}')
 
 

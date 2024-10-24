@@ -25,8 +25,17 @@ def setup():
 
     # Set a callback for when the eventbus receives a message that matches this topic
     # Subscriptions must be set before the MQTT client is connected
-    @mqtt_client.subscribe(config.history_topic + '/#')
+    @mqtt_client.subscribe(config.mqtt_topic + '/history/#')
     async def on_history_message(client, topic, payload, qos, properties):
+        evt = json.loads(payload)
+        key = evt['key']
+        data = evt['data']
+        LOGGER.info(f'{topic=}, {key=}')
+        LOGGER.debug(f'{key=}, {data=}')
+
+
+    @mqtt_client.subscribe(config.mqtt_topic + '/state/#')
+    async def on_state_message(client, topic, payload, qos, properties):
         evt = json.loads(payload)
         key = evt['key']
         data = evt['data']

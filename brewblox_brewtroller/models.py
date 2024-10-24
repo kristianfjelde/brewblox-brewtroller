@@ -36,7 +36,7 @@ class ServiceConfig(BaseSettings):
     mqtt_host: str = 'eventbus'
     mqtt_port: int = 1883
 
-    history_topic: str = 'brewcast/history'
+    mqtt_topic: str = 'brewcast'
     publish_interval: timedelta = timedelta(seconds=5)
 
     bt_url: str = 'http://brewtroller'

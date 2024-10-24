@@ -1,4 +1,5 @@
 import asyncio
+import time
 from contextlib import asynccontextmanager
 from datetime import timedelta
 from functools import lru_cache
@@ -6,6 +7,8 @@ from typing import AsyncGenerator, Coroutine
 
 from .models import ServiceConfig
 
+def time_ms():
+    return time.time_ns() // 1000000
 
 @lru_cache
 def get_config() -> ServiceConfig:  # pragma: no cover
@@ -25,12 +28,6 @@ def get_config() -> ServiceConfig:  # pragma: no cover
 async def task_context(coro: Coroutine,
                        cancel_timeout=timedelta(seconds=5)
                        ) -> AsyncGenerator[asyncio.Task, None]:
-    """
-    Wraps provided coroutine in an async task.
-    At the end of the context, the task is cancelled and awaited.
-
-    This makes it easy to start background tasks in `lifespan()` context managers.
-    """
     task = asyncio.create_task(coro)
     try:
         yield task
