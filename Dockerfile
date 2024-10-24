@@ -32,7 +32,7 @@ RUN <<EOF
     set -ex
 
     python3 -m venv $VENV
-    pip3 install --no-index your_package
+    pip3 install --no-index brewblox_brewtroller
     pip3 freeze
     rm -rf /wheeley
 EOF

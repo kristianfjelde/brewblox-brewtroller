@@ -29,7 +29,7 @@ class ServiceConfig(BaseSettings):
         json_schema_extra='ignore',
     )
 
-    name: str = 'brewblox_brewtroller'
+    name: str = 'brewtroller'
     debug: bool = False
 
     mqtt_protocol: Literal['mqtt', 'mqtts'] = 'mqtt'
